@@ -1,0 +1,20 @@
+_______________________________________________________________________________________
+Error :  IntegrityError: duplicate key violates unique constraint "auth_permission_pkey
+Solution : http://community.dzonesoftware.com/questions/26067/migration-issues.html
+_______________________________________________________________________________________
+Issue : Unable to perform migrate after makemigrations
+
+Operations to perform:
+Apply all migrations: nsc
+Running migrations:
+No migrations to apply.
+
+Solution : 
+
+python manage.py dbshell
+DELETE FROM django_migrations WHERE app='nsc'
+delete migration folder
+python manage.py makemigrations nsc
+python manage.py migrate nsc --fake
+__________________________________________________________________________________________
+
