@@ -25,14 +25,14 @@ class EventView(View):
 				img_url= request.POST['img_url'], department = request.POST['department'],college=college)
 			event_insatnce.save()
 
-			return JsonResponse({"meta": {'status': "2", 'message': 'success'}})
+			return JsonResponse({"meta": {'status': "0", 'message': 'success'}})
 
 		except Exception as e:
-			return JsonResponse({"meta": {'status': "0", 'error': str(e)}})
+			return JsonResponse({"meta": {'status': "2", 'error': str(e)}})
 
 
 	@method_decorator(csrf_exempt)
 	#@method_decorator(protected_resource())
-	def dispatch(self, request, **args, *kwargs):
-		return super(EventView, self).dispatch(request, **args, *kwargs)
+	def dispatch(self, request, *args, **kwargs):
+		return super(EventView, self).dispatch(request, *args, **kwargs)
 '''
